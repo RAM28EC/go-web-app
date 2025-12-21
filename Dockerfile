@@ -1,4 +1,4 @@
-FROM go:1.22 as base
+FROM golang:1.22 as base
 WORKDIR /app
 COPY go.mod ./
 RUN go build -o main .
