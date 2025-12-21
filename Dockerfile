@@ -1,0 +1,9 @@
+FROM go:1.22 as base
+WORKDIR /app
+COPY go.mod ./
+RUN go build -o main .
+FROM gcr.io/distroless/base
+COPY --from=base /app/dest/ ./static
+EXPOSE 8080
+CMD [ "./main" ]
+
