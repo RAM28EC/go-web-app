@@ -1,0 +1,28 @@
+- name: cicd for devopified projects
+  on:
+    push:
+      branches:
+        - feature
+    paths-ignore:
+      - 'helm/**'
+      - 'k8s/**'
+      - 'README.md'
+  jobs:
+    build:
+      runs-on: ubuntu-latest
+      steps:
+        - name: Checkout code
+          uses: actions/checkout@v5
+
+        - name: Set up go 1.23
+          uses: actions/setup-go@v6
+          with:
+            go-version: 1.23
+        - name: Build
+          run: |
+            go build -o go-web-app 
+        - name: Run Tests
+          run: |
+            go test ./...
+                   
+          
