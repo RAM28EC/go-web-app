@@ -39,7 +39,7 @@
        #   run: |
        #     curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin v1.59.2
         - name: Run golangci-lint
-          uses: golangci/golangci-lint-action@v6
+          uses: golangci/golangci-lint-action@v9
           with:
             version: v2.6
                    
