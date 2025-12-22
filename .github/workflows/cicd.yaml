@@ -79,8 +79,8 @@
         - name: Update Helm Chart with new image tag
           run: |
             IMAGE_TAG=${{ github.run_id }}
-            sed -i "s/tag: .*/tag: ${{ github.run_id }}/g" /helm/go-chart/values.yaml
-            cat /helm/go-chart/values.yaml
+            sed -i "s/tag: .*/tag: ${IMAGE_TAG}/g" "$GITHUB_WORKSPACE/helm/go-chart/values.yaml"
+            cat "$GITHUB_WORKSPACE/helm/go-chart/values.yaml"
 
         - name: Commit and Push changes
           run: |
